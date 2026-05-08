@@ -1,34 +1,50 @@
 /* linkedin_content.css */
 
-.humanize-linkedin {
-  /* LinkedIn specific adjustments */
-  margin-left: 8px;
-  margin-right: 8px;
+.betterr-linkedin-container {
   display: inline-flex;
   align-items: center;
-  z-index: 10; /* Make sure it sits above other icons if crowded */
+  gap: 6px;
+  margin-right: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  z-index: 10000;
 }
 
-/* Specific to LinkedIn Post Compose Footer */
-.share-box-feed-entry__footer .humanize-linkedin {
-  margin-top: 8px;
-  width: 100%;
-  justify-content: flex-end; /* Align right in the post box */
+.betterr-linkedin-btn {
+  background-color: #0A0D08;
+  color: #C4B99A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 300ms ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-/* Specific to LinkedIn Message Footer */
-.msg-form__footer .humanize-linkedin,
-.msg-form__left-actions .humanize-linkedin {
-  margin-left: auto; /* Push it to the right before the send button if possible */
+.betterr-linkedin-btn:hover {
+  background-color: rgba(122, 154, 110, 0.1);
+  border-color: rgba(122, 154, 110, 0.4);
+  box-shadow: 0 0 10px rgba(122, 154, 110, 0.2);
+}
+
+.betterr-linkedin-btn:disabled {
+  background-color: #0A0D08;
+  color: #E8EFE2;
+  opacity: 0.5;
+  border-color: rgba(255, 255, 255, 0.05);
+  cursor: not-allowed;
 }
 
 /* Tweak select size for LinkedIn's tighter UI */
-.humanize-linkedin .humanize-select {
+.betterr-linkedin .betterr-select {
   padding: 4px 6px;
   font-size: 12px;
 }
 
-.humanize-linkedin .humanize-btn {
+.betterr-linkedin .betterr-btn {
   padding: 4px 10px;
   font-size: 12px;
 }

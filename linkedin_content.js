@@ -23,7 +23,7 @@ function handleMutations(mutations) {
   msgFooters.forEach(footer => {
     // Only inject if it's the actual actions container and doesn't have it yet
     if (footer.classList.contains('msg-form__left-actions') || footer.querySelector('.msg-form__send-button')) {
-      if (!footer.parentNode.querySelector('.humanize-container')) {
+      if (!footer.parentNode.querySelector('.betterr-container')) {
         injectUI(footer, 'message');
       }
     }
@@ -32,7 +32,7 @@ function handleMutations(mutations) {
   // 2. Post/Share Box Footer
   const postFooters = document.querySelectorAll('.share-box-footer, .share-box-feed-entry__footer');
   postFooters.forEach(footer => {
-    if (!footer.querySelector('.humanize-container')) {
+    if (!footer.querySelector('.betterr-container')) {
       injectUI(footer, 'post');
     }
   });
@@ -40,10 +40,10 @@ function handleMutations(mutations) {
 
 function injectUI(footer, type) {
   const container = document.createElement('div');
-  container.className = 'humanize-container humanize-linkedin';
+  container.className = 'betterr-container betterr-linkedin';
 
   const select = document.createElement('select');
-  select.className = 'humanize-select';
+  select.className = 'betterr-select';
   select.innerHTML = `
     <option value="professional">Professional</option>
     <option value="student">Student</option>
@@ -52,22 +52,22 @@ function injectUI(footer, type) {
   `;
 
   const btn = document.createElement('button');
-  btn.className = 'humanize-btn';
-  btn.innerHTML = '✨ Humanize';
+  btn.className = 'betterr-btn';
+  btn.innerHTML = '✨ betterr';
 
   const errorSpan = document.createElement('span');
-  errorSpan.className = 'humanize-error';
+  errorSpan.className = 'betterr-error';
 
   const actionsContainer = document.createElement('div');
-  actionsContainer.className = 'humanize-actions';
+  actionsContainer.className = 'betterr-actions';
   actionsContainer.style.display = 'none';
 
   const acceptBtn = document.createElement('button');
-  acceptBtn.className = 'humanize-action-btn accept';
+  acceptBtn.className = 'betterr-action-btn accept';
   acceptBtn.innerText = 'Accept';
 
   const restoreBtn = document.createElement('button');
-  restoreBtn.className = 'humanize-action-btn restore';
+  restoreBtn.className = 'betterr-action-btn restore';
   restoreBtn.innerText = 'Restore';
 
   actionsContainer.appendChild(acceptBtn);
@@ -100,7 +100,7 @@ function injectUI(footer, type) {
     if (!text || text.trim().length === 0) return;
 
     btn.disabled = true;
-    btn.innerHTML = '⌛ Humanizing...';
+    btn.innerHTML = '⌛ refining...';
     errorSpan.innerText = '';
     
     composeState.set(editable, { originalHtml: editable.innerHTML });
@@ -111,7 +111,7 @@ function injectUI(footer, type) {
       persona: select.value
     }, (response) => {
       btn.disabled = false;
-      btn.innerHTML = '✨ Humanize';
+      btn.innerHTML = '✨ betterr';
 
       if (!response) {
         errorSpan.innerText = 'No response from background worker.';
@@ -139,7 +139,7 @@ function injectUI(footer, type) {
     e.preventDefault();
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = editable.innerHTML;
-    const spans = tempDiv.querySelectorAll('.humanize-changed');
+    const spans = tempDiv.querySelectorAll('.betterr-changed');
     spans.forEach(span => {
       const textNode = document.createTextNode(span.textContent);
       span.parentNode.replaceChild(textNode, span);
@@ -226,7 +226,7 @@ function generateDiffHtml(oldText, newText) {
     }
     const safeText = part.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if (part.type === 'added') {
-      html += `<span class="humanize-changed">${safeText}</span> `;
+      html += `<span class="betterr-changed">${safeText}</span> `;
     } else {
       html += `${safeText} `;
     }

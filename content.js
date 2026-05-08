@@ -22,7 +22,7 @@ function handleMutations(mutations) {
   // .btC = bottom table row, .gU.Up = Send button cell, .aqL = formatting toolbar
   const toolbars = document.querySelectorAll('.btC .aqL, .gU.Up, tr.btC');
   toolbars.forEach(toolbar => {
-    if (!toolbar.parentNode.querySelector('.humanize-container')) {
+    if (!toolbar.parentNode.querySelector('.betterr-container')) {
       injectUI(toolbar);
     }
   });
@@ -30,10 +30,10 @@ function handleMutations(mutations) {
 
 function injectUI(toolbar) {
   const container = document.createElement('div');
-  container.className = 'humanize-container';
+  container.className = 'betterr-container';
 
   const select = document.createElement('select');
-  select.className = 'humanize-select';
+  select.className = 'betterr-select';
   select.innerHTML = `
     <option value="student">Student</option>
     <option value="professional">Professional</option>
@@ -42,22 +42,22 @@ function injectUI(toolbar) {
   `;
 
   const btn = document.createElement('button');
-  btn.className = 'humanize-btn';
-  btn.innerHTML = '✨ Humanize';
+  btn.className = 'betterr-btn';
+  btn.innerHTML = '✨ betterr';
 
   const errorSpan = document.createElement('span');
-  errorSpan.className = 'humanize-error';
+  errorSpan.className = 'betterr-error';
 
   const actionsContainer = document.createElement('div');
-  actionsContainer.className = 'humanize-actions';
+  actionsContainer.className = 'betterr-actions';
   actionsContainer.style.display = 'none';
 
   const acceptBtn = document.createElement('button');
-  acceptBtn.className = 'humanize-action-btn accept';
+  acceptBtn.className = 'betterr-action-btn accept';
   acceptBtn.innerText = 'Accept';
 
   const restoreBtn = document.createElement('button');
-  restoreBtn.className = 'humanize-action-btn restore';
+  restoreBtn.className = 'betterr-action-btn restore';
   restoreBtn.innerText = 'Restore';
 
   actionsContainer.appendChild(acceptBtn);
@@ -103,7 +103,7 @@ function injectUI(toolbar) {
     }
 
     btn.disabled = true;
-    btn.innerHTML = '⌛ Humanizing...';
+    btn.innerHTML = '⌛ refining...';
     errorSpan.innerText = '';
     
     composeState.set(editable, { originalHtml: editable.innerHTML });
@@ -114,7 +114,7 @@ function injectUI(toolbar) {
       persona: select.value
     }, (response) => {
       btn.disabled = false;
-      btn.innerHTML = '✨ Humanize';
+      btn.innerHTML = '✨ betterr';
 
       if (chrome.runtime.lastError) {
         errorSpan.innerText = 'Connection error. Please reload page.';
@@ -149,7 +149,7 @@ function injectUI(toolbar) {
   acceptBtn.addEventListener('click', () => {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = editable.innerHTML;
-    const spans = tempDiv.querySelectorAll('.humanize-changed');
+    const spans = tempDiv.querySelectorAll('.betterr-changed');
     spans.forEach(span => {
       const textNode = document.createTextNode(span.textContent);
       span.parentNode.replaceChild(textNode, span);
@@ -232,7 +232,7 @@ function generateDiffHtml(oldText, newText) {
     }
     const safeText = part.text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if (part.type === 'added') {
-      html += `<span class="humanize-changed">${safeText}</span> `;
+      html += `<span class="betterr-changed">${safeText}</span> `;
     } else {
       html += `${safeText} `;
     }

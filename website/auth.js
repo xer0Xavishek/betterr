@@ -21,13 +21,13 @@ switchLink.addEventListener('click', (e) => {
   
   if (isLogin) {
     authTitle.textContent = 'Welcome Back';
-    authSubtitle.textContent = 'Log in to your Humanize account.';
+    authSubtitle.textContent = 'Log in to your betterr account.';
     authBtn.textContent = 'Log In';
     switchText.textContent = "Don't have an account?";
     switchLink.textContent = 'Sign Up';
   } else {
     authTitle.textContent = 'Create Account';
-    authSubtitle.textContent = 'Join Humanize for free.';
+    authSubtitle.textContent = 'Join betterr for free.';
     authBtn.textContent = 'Sign Up';
     switchText.textContent = 'Already have an account?';
     switchLink.textContent = 'Log In';

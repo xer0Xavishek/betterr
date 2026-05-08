@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Humanize",
+  "name": "betterr",
   "version": "1.0",
-  "description": "Makes AI text sound human in Gmail.",
+  "description": "Elevate your writing in Gmail and LinkedIn.",
   "permissions": [
     "storage",
     "activeTab"
@@ -43,6 +43,6 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Humanize"
+    "default_title": "betterr"
   }
 }
