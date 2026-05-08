@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Humanize</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="glow-blob"></div>
+  <nav>
+    <a href="index.html" class="logo">Humanize</a>
+    <div class="links">
+      <a href="#" id="logoutBtn" class="btn btn-secondary">Log Out</a>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <div class="glass-panel dashboard-box">
+      <h2>You're all set! ✨</h2>
+      <p>Your account is ready. To start making your text sound human, open the Humanize Chrome extension and log in with your credentials.</p>
+      <a href="#" class="btn btn-primary" style="margin-top: 16px;">Go to Extension</a>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://qwffnaeyniinnizrwnah.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_-I4fFFUkpKLwjg7vGX9f6A_e5keGT8H';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        window.location.href = 'auth.html';
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+      e.preventDefault();
+      await supabaseClient.auth.signOut();
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
