@@ -191,6 +191,7 @@ nav .links a:hover {
   max-width: 400px;
   text-align: center;
   box-shadow: inset 0px 0px 20px 0px rgba(122, 154, 110, 0.05);
+  box-sizing: border-box;
 }
 
 .auth-box h2 {
@@ -312,7 +313,7 @@ nav .links a:hover {
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  gap: 12px;
 }
 
 .step {
