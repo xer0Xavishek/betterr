@@ -51,7 +51,13 @@ authBtn.addEventListener('click', async () => {
   if (isLogin) {
     result = await supabaseClient.auth.signInWithPassword({ email, password });
   } else {
-    result = await supabaseClient.auth.signUp({ email, password });
+    result = await supabaseClient.auth.signUp({ 
+      email, 
+      password,
+      options: {
+        emailRedirectTo: window.location.origin + '/dashboard.html'
+      }
+    });
   }
 
   authBtn.disabled = false;
