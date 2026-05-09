@@ -10,8 +10,21 @@
 </head>
 <body>
   <div class="container">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px;">
+      <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; border-radius: 6px;">
+        <defs>
+          <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6" />
+            <stop offset="100%" stop-color="#0ea5e9" />
+          </linearGradient>
+        </defs>
+        <rect width="24" height="24" rx="6" fill="url(#logo-grad)"/>
+        <path d="M12 5l1.5 4.5L18 11l-4.5 1.5L12 17l-1.5-4.5L6 11l4.5-1.5z" fill="#fff"/>
+      </svg>
+      <span style="font-size: 24px; color: #fff; font-weight: 500;">betterr</span>
+    </div>
+
     <div id="loginForm">
-      <h2>Log In</h2>
       <div class="form-group">
         <label>Email</label>
         <input type="email" id="email" placeholder="you@example.com">
@@ -24,7 +37,6 @@
     </div>
     
     <div id="loggedInState" style="display: none;">
-      <h2>betterr</h2>
       <p>Logged in as: <br><strong id="userEmail"></strong></p>
       <button id="logoutBtn" class="btn btn-secondary">Log Out</button>
     </div>
