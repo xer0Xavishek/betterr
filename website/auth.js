@@ -66,6 +66,16 @@ authBtn.addEventListener('click', async () => {
   if (result.error) {
     showError(result.error.message);
   } else {
+    // Log genuine signup to site_stats table
+    if (!isLogin) {
+      try {
+        const { data: statData } = await supabaseClient.from('site_stats').select('signups').eq('id', 1).single();
+        if (statData) {
+          await supabaseClient.from('site_stats').update({ signups: statData.signups + 1 }).eq('id', 1);
+        }
+      } catch (e) { console.error(e); }
+    }
+
     if (!isLogin && !result.data.session) {
       showError("Check your email to confirm your account!");
       errorMsg.style.background = "rgba(16, 185, 129, 0.1)";

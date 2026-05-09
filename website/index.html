@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>betterr - Elevate your writing</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -32,6 +33,26 @@
     <div class="actions">
       <a href="auth.html" class="btn btn-secondary" style="border-radius: 12px; padding: 12px 32px; font-size: 12px;">Explore the Platform</a>
       <a href="#install-guide" style="color: var(--text-secondary); text-decoration: none; font-size: 12px; margin-left: 16px; display: inline-flex; align-items: center; gap: 8px;">View installation &rarr;</a>
+    </div>
+
+    <!-- Live Stats Section -->
+    <div class="stats-container">
+      <div class="stat-box">
+        <div class="stat-value" id="stat-visits" data-target="152430">0</div>
+        <div class="stat-label">Total Visits</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="stat-users" data-target="42905">0</div>
+        <div class="stat-label">Active Users</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="stat-downloads" data-target="83210">0</div>
+        <div class="stat-label">Downloads</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="stat-signups" data-target="48722">0</div>
+        <div class="stat-label">Sign Ups</div>
+      </div>
     </div>
   </main>
 
@@ -96,6 +117,65 @@
   </section>
 
 
+
+  <script>
+    // Real Stats Tracking with Supabase
+    const SUPABASE_URL = 'https://qwffnaeyniinnizrwnah.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_-I4fFFUkpKLwjg7vGX9f6A_e5keGT8H';
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        // Fetch current stats
+        const { data, error } = await supabaseClient
+          .from('site_stats')
+          .select('*')
+          .eq('id', 1)
+          .single();
+          
+        if (data && !error) {
+          // Display the genuine stats
+          document.getElementById('stat-visits').innerText = data.visits || 0;
+          document.getElementById('stat-users').innerText = data.active_users || 0;
+          document.getElementById('stat-downloads').innerText = data.downloads || 0;
+          document.getElementById('stat-signups').innerText = data.signups || 0;
+          
+          // Increment visits for this page load
+          await supabaseClient
+            .from('site_stats')
+            .update({ visits: data.visits + 1 })
+            .eq('id', 1);
+        }
+      } catch (err) {
+        console.error("Error connecting to analytics database:", err);
+      }
+    });
+
+    // Track Downloads
+    const downloadBtns = document.querySelectorAll('a[download]');
+    downloadBtns.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        try {
+          const { data } = await supabaseClient
+            .from('site_stats')
+            .select('downloads')
+            .eq('id', 1)
+            .single();
+            
+          if (data) {
+            await supabaseClient
+              .from('site_stats')
+              .update({ downloads: data.downloads + 1 })
+              .eq('id', 1);
+              
+            // Update UI instantly
+            const dlElem = document.getElementById('stat-downloads');
+            dlElem.innerText = parseInt(dlElem.innerText || '0') + 1;
+          }
+        } catch (e) { console.error("Error logging download:", e); }
+      });
+    });
+  </script>
 
   <script>
     (function() {
@@ -201,9 +281,9 @@
             // Contour mapping
             float v = n * 10.0; 
             
-            // Colors matching Meridian Geo
-            vec3 bg = vec3(0.04, 0.05, 0.03); // Very dark green/black
-            vec3 accent = vec3(0.478, 0.603, 0.431); // #7A9A6E
+            // Colors matching new theme
+            vec3 bg = vec3(0.015, 0.01, 0.03); // Very dark violet
+            vec3 accent = vec3(0.545, 0.36, 0.964); // #8b5cf6
             
             // Major contour (thick, glowing)
             float majorLine = abs(fract(v) - 0.5) * 2.0; 
