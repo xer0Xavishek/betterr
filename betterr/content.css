@@ -1,0 +1,86 @@
+/* content.css */
+
+.humanize-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 12px;
+  font-family: Roboto, sans-serif;
+}
+
+.humanize-btn {
+  background-color: #3C3489;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.humanize-btn:hover {
+  background-color: #2a2460;
+}
+
+.humanize-btn:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+.humanize-select {
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 13px;
+  background: white;
+  color: #374151;
+  outline: none;
+}
+
+.humanize-select:focus {
+  border-color: #3C3489;
+}
+
+.humanize-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.humanize-action-btn {
+  background: transparent;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #374151;
+}
+
+.humanize-action-btn.accept {
+  color: #059669;
+  border-color: #059669;
+  background: #ECFDF5;
+}
+
+.humanize-action-btn.restore {
+  color: #DC2626;
+  border-color: #DC2626;
+  background: #FEF2F2;
+}
+
+.humanize-changed {
+  background-color: #FEF08A !important;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.humanize-error {
+  color: #DC2626;
+  font-size: 12px;
+  margin-left: 8px;
+}

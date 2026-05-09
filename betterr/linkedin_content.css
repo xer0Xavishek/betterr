@@ -1,0 +1,34 @@
+/* linkedin_content.css */
+
+.humanize-linkedin {
+  /* LinkedIn specific adjustments */
+  margin-left: 8px;
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  z-index: 10; /* Make sure it sits above other icons if crowded */
+}
+
+/* Specific to LinkedIn Post Compose Footer */
+.share-box-feed-entry__footer .humanize-linkedin {
+  margin-top: 8px;
+  width: 100%;
+  justify-content: flex-end; /* Align right in the post box */
+}
+
+/* Specific to LinkedIn Message Footer */
+.msg-form__footer .humanize-linkedin,
+.msg-form__left-actions .humanize-linkedin {
+  margin-left: auto; /* Push it to the right before the send button if possible */
+}
+
+/* Tweak select size for LinkedIn's tighter UI */
+.humanize-linkedin .humanize-select {
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+.humanize-linkedin .humanize-btn {
+  padding: 4px 10px;
+  font-size: 12px;
+}

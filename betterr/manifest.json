@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Humanize",
+  "version": "1.0",
+  "description": "Makes AI text sound human in Gmail.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://mail.google.com/*",
+    "*://*.linkedin.com/*",
+    "*://api.groq.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://mail.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.linkedin.com/*"
+      ],
+      "js": [
+        "linkedin_content.js"
+      ],
+      "css": [
+        "content.css",
+        "linkedin_content.css"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Humanize"
+  }
+}
