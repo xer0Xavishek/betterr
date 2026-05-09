@@ -90,14 +90,14 @@ function injectUI(toolbar) {
                      document.querySelector('div[role="textbox"][contenteditable="true"]');
                      
     if (!editable) {
-      errorSpan.innerText = 'Error: Cannot find email body.';
+      errorSpan.innerText = 'Error: Cannot find email body. Click inside the text box first.';
       setTimeout(() => { errorSpan.innerText = ''; }, 4000);
       return;
     }
 
     const text = editable.innerText;
     if (!text || text.trim().length === 0) {
-      errorSpan.innerText = 'Please type a draft first.';
+      errorSpan.innerText = 'Please type a draft first so betterr has something to rewrite.';
       setTimeout(() => { errorSpan.innerText = ''; }, 4000);
       return;
     }
@@ -117,7 +117,7 @@ function injectUI(toolbar) {
       btn.innerHTML = '✨ betterr';
 
       if (chrome.runtime.lastError) {
-        errorSpan.innerText = 'Connection error. Please reload page.';
+        errorSpan.innerText = 'Connection error. Please refresh the Gmail tab.';
         setTimeout(() => { errorSpan.innerText = ''; }, 5000);
         return;
       }

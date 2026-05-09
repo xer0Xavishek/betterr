@@ -97,7 +97,11 @@ function injectUI(footer, type) {
   btn.addEventListener('click', async (e) => {
     e.preventDefault();
     const text = editable.innerText;
-    if (!text || text.trim().length === 0) return;
+    if (!text || text.trim().length === 0) {
+      errorSpan.innerText = 'Please type a draft first so betterr has something to rewrite.';
+      setTimeout(() => { errorSpan.innerText = ''; }, 4000);
+      return;
+    }
 
     btn.disabled = true;
     btn.innerHTML = '⌛ refining...';
@@ -113,8 +117,14 @@ function injectUI(footer, type) {
       btn.disabled = false;
       btn.innerHTML = '✨ betterr';
 
+      if (chrome.runtime.lastError) {
+        errorSpan.innerText = 'Connection error. Please refresh the LinkedIn tab.';
+        setTimeout(() => { errorSpan.innerText = ''; }, 5000);
+        return;
+      }
+
       if (!response) {
-        errorSpan.innerText = 'No response from background worker.';
+        errorSpan.innerText = 'No response from background worker. Please refresh.';
         setTimeout(() => { errorSpan.innerText = ''; }, 5000);
         return;
       }

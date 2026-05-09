@@ -76,7 +76,7 @@ async function checkLogin() {
   const session = data.supabaseSession;
 
   if (!session) {
-    return { allowed: false, message: "Please log in via the extension options to use Humanize." };
+    return { allowed: false, message: "Please log in via the betterr extension popup in the top right to continue." };
   }
 
   return { allowed: true };
