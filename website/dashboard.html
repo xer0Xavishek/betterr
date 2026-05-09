@@ -13,7 +13,19 @@
   <div style="position: fixed; inset: 0; z-index: 1; background: radial-gradient(ellipse at top, transparent 0%, rgba(14,14,17,0.4) 50%, rgba(14,14,17,0.95) 100%); pointer-events: none;"></div>
 
   <nav>
-    <a href="index.html" class="logo"><img src="assets/logo.png" alt="betterr logo" class="logo-icon" style="width: 24px; height: 24px; border-radius: 6px;">betterr</a>
+    <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 8px;">
+      <svg viewBox="0 0 24 24" class="logo-icon" style="width: 24px; height: 24px; border-radius: 6px;">
+        <defs>
+          <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="var(--primary)" />
+            <stop offset="100%" stop-color="var(--secondary)" />
+          </linearGradient>
+        </defs>
+        <rect width="24" height="24" rx="6" fill="url(#logo-grad)"/>
+        <path d="M12 5l1.5 4.5L18 11l-4.5 1.5L12 17l-1.5-4.5L6 11l4.5-1.5z" fill="#fff"/>
+      </svg>
+      betterr
+    </a>
     <div class="links">
       <a href="#" id="logoutBtn" class="btn btn-secondary">Log Out</a>
     </div>
