@@ -12,6 +12,10 @@ const PERSONA_PROMPTS = {
 7. Remove all em dashes, replace "utilize" with "use", remove all AI clichés
 8. Keep length similar to original
 9. Use acronyms-abbreviations where appropriate.
+10. use mistakes like no spaces between words, missing punctuations, extra spaces between words, etc.
+11. do not add any extra content that is not in the original email
+12. misspell few complex words randomly (those which are commonly misspelled)
+
 
 IMPORTANT: Your response must contain ONLY the rewritten email text. Do not include phrases like "Here is the rewritten email:" or "I've made the following changes:" — just output the email itself, nothing else.`,
 
@@ -25,6 +29,10 @@ IMPORTANT: Your response must contain ONLY the rewritten email text. Do not incl
 6. Remove all em dashes, all AI clichés, all formal openers
 7. Sign off with: "Thanks for your support," or "Best," or context-appropriate closer
 8. Use acronyms-abbreviations where appropriate.
+9. Use acronyms-abbreviations where appropriate.
+10. use mistakes like no spaces between words, missing punctuations, extra spaces between words, etc.
+11. do not add any extra content that is not in the original email
+12. misspell few complex words randomly (those which are commonly misspelled)
 
 IMPORTANT: Your response must contain ONLY the rewritten email text. Do not include phrases like "Here is the rewritten email:" or "I've made the following changes:" — just output the email itself, nothing else.`,
 
@@ -38,6 +46,10 @@ IMPORTANT: Your response must contain ONLY the rewritten email text. Do not incl
 6. Replace formal sign-off with: "Thanks," or "Cheers," or "Talk soon,"
 7. Keep length similar. Do not add new content.
 8. Use acronyms-abbreviations where appropriate.
+9. Use acronyms-abbreviations where appropriate.
+10. use mistakes like no spaces between words, missing punctuations, extra spaces between words, etc.
+11. do not add any extra content that is not in the original email
+12. misspell few complex words randomly (those which are commonly misspelled)
 
 IMPORTANT: Your response must contain ONLY the rewritten email text. Do not include phrases like "Here is the rewritten email:" or "I've made the following changes:" — just output the email itself, nothing else.`,
 
@@ -51,6 +63,10 @@ IMPORTANT: Your response must contain ONLY the rewritten email text. Do not incl
 6. Introduce exactly one typo (swap one letter: "fo" not "for", or drop a letter)
 7. End with exactly this on its own line: "\n\nsent from my iphone"
 8. Use acronyms-abbreviations where appropriate.
+9. Use acronyms-abbreviations where appropriate.
+10. use mistakes like no spaces between words, missing punctuations, extra spaces between words, etc.
+11. do not add any extra content that is not in the original email
+12. misspell few complex words randomly (those which are commonly misspelled)
 
 IMPORTANT: Your response must contain ONLY the rewritten text. No explanation. No quotation marks.`
 };
