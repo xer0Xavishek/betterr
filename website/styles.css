@@ -55,8 +55,8 @@ nav {
 
 nav .logo {
   font-family: var(--font-system);
-  font-weight: 300;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 26px;
   color: var(--text-primary);
   text-decoration: none;
   display: flex;
@@ -74,8 +74,8 @@ nav .links a {
   color: var(--text-secondary);
   text-decoration: none;
   margin-left: 32px;
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 400;
   letter-spacing: 0.3px;
   transition: color 150ms ease;
 }
