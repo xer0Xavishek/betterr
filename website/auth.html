@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
   <nav>
     <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 8px;">
@@ -17,8 +19,8 @@
             <stop offset="100%" stop-color="var(--secondary)" />
           </linearGradient>
         </defs>
-        <rect width="24" height="24" rx="6" fill="url(#logo-grad)"/>
-        <path d="M12 5l1.5 4.5L18 11l-4.5 1.5L12 17l-1.5-4.5L6 11l4.5-1.5z" fill="#fff"/>
+        <rect width="24" height="24" rx="6" fill="url(#logo-grad)" />
+        <path d="M12 5l1.5 4.5L18 11l-4.5 1.5L12 17l-1.5-4.5L6 11l4.5-1.5z" fill="#fff" />
       </svg>
       betterr
     </a>
@@ -26,37 +28,39 @@
   <div class="glow-blob"></div>
   <!-- WebGL Canvas Background -->
   <canvas id="webgl" style="position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.85;"></canvas>
-  <div style="position: fixed; inset: 0; z-index: 1; background: radial-gradient(ellipse at top, transparent 0%, rgba(14,14,17,0.4) 50%, rgba(14,14,17,0.95) 100%); pointer-events: none;"></div>
+  <div
+    style="position: fixed; inset: 0; z-index: 1; background: radial-gradient(ellipse at top, transparent 0%, rgba(14,14,17,0.4) 50%, rgba(14,14,17,0.95) 100%); pointer-events: none;">
+  </div>
 
   <div class="auth-container">
     <div class="card-shell">
       <div class="auth-box card-surface glass-panel">
         <h2 id="authTitle">Sign Up</h2>
         <p id="authSubtitle">Join betterr for free.</p>
-      
-      <div id="errorMsg" class="error-message"></div>
 
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="you@example.com" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="••••••••" required>
-      </div>
+        <div id="errorMsg" class="error-message"></div>
 
-      <button id="authBtn" class="btn btn-primary">Sign Up</button>
-      
-      <div class="switch-auth">
-        <span id="switchText">Already have an account?</span> 
-        <a href="#" id="switchLink">Log In</a>
-      </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+
+        <button id="authBtn" class="btn btn-primary">Sign Up</button>
+
+        <div class="switch-auth">
+          <span id="switchText">Already have an account?</span>
+          <a href="#" id="switchLink">Log In</a>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    (function() {
+    (function () {
       const canvas = document.getElementById('webgl');
       if (!canvas) return;
       const gl = canvas.getContext('webgl');
@@ -208,7 +212,7 @@
 
       const buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
       const posAttr = gl.getAttribLocation(prog, "p");
       gl.enableVertexAttribArray(posAttr);
       gl.vertexAttribPointer(posAttr, 2, gl.FLOAT, false, 0, 0);
@@ -223,8 +227,8 @@
       let targetMouseY = 0.5;
 
       window.addEventListener('mousemove', (e) => {
-          targetMouseX = e.clientX / window.innerWidth;
-          targetMouseY = 1.0 - (e.clientY / window.innerHeight);
+        targetMouseX = e.clientX / window.innerWidth;
+        targetMouseY = 1.0 - (e.clientY / window.innerHeight);
       });
 
       function render(time) {
@@ -234,7 +238,7 @@
         gl.uniform2f(uRes, canvas.width, canvas.height);
         gl.uniform1f(uTime, time);
         gl.uniform2f(uMouse, mouseX, mouseY);
-        
+
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         requestAnimationFrame(render);
       }
@@ -243,4 +247,5 @@
   </script>
   <script type="module" src="auth.js"></script>
 </body>
+
 </html>

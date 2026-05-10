@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,13 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body>
   <!-- WebGL Canvas Background -->
   <canvas id="webgl" style="position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.85;"></canvas>
-  <div style="position: fixed; inset: 0; z-index: 1; background: radial-gradient(ellipse at top, transparent 0%, rgba(14,14,17,0.4) 50%, rgba(14,14,17,0.95) 100%); pointer-events: none;"></div>
+  <div
+    style="position: fixed; inset: 0; z-index: 1; background: radial-gradient(ellipse at top, transparent 0%, rgba(14,14,17,0.4) 50%, rgba(14,14,17,0.95) 100%); pointer-events: none;">
+  </div>
 
   <nav>
     <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 8px;">
@@ -21,8 +25,8 @@
             <stop offset="100%" stop-color="var(--secondary)" />
           </linearGradient>
         </defs>
-        <rect width="24" height="24" rx="6" fill="url(#logo-grad)"/>
-        <path d="M12 5l1.5 4.5L18 11l-4.5 1.5L12 17l-1.5-4.5L6 11l4.5-1.5z" fill="#fff"/>
+        <rect width="24" height="24" rx="6" fill="url(#logo-grad)" />
+        <path d="M12 5l1.5 4.5L18 11l-4.5 1.5L12 17l-1.5-4.5L6 11l4.5-1.5z" fill="#fff" />
       </svg>
       betterr
     </a>
@@ -35,18 +39,19 @@
     <div class="card-shell">
       <div class="card-surface glass-panel dashboard-box">
         <h2>You're all set! ✨</h2>
-      <p>Your account is ready. Follow these steps to install the extension:</p>
-      
-      <div style="text-align: left; background: rgba(0,0,0,0.2); padding: 24px; border-radius: 12px; margin: 24px 0;">
-        <ol style="color: var(--text-secondary); line-height: 1.8; margin: 0; padding-left: 20px;">
-          <li><a href="betterr-extension.zip" download style="color: var(--primary); font-weight: 500;">Download the extension .zip file</a> and extract it.</li>
-          <li>Go to <code>chrome://extensions</code> in your browser.</li>
-          <li>Turn on <strong>Developer mode</strong> (top right).</li>
-          <li>Click <strong>Load unpacked</strong> and select the extracted folder.</li>
-        </ol>
-      </div>
-      
-      <p style="font-size: 14px;">Once installed, click the betterr icon in your browser toolbar to log in!</p>
+        <p>Your account is ready. Follow these steps to install the extension:</p>
+
+        <div style="text-align: left; background: rgba(0,0,0,0.2); padding: 24px; border-radius: 12px; margin: 24px 0;">
+          <ol style="color: var(--text-secondary); line-height: 1.8; margin: 0; padding-left: 20px;">
+            <li><a href="betterr-extension.zip" download style="color: var(--primary); font-weight: 500;">Download the
+                extension .zip file</a> and extract it.</li>
+            <li>Go to <code>chrome://extensions</code> in your browser.</li>
+            <li>Turn on <strong>Developer mode</strong> (top right).</li>
+            <li>Click <strong>Load unpacked</strong> and select the extracted folder.</li>
+          </ol>
+        </div>
+
+        <p style="font-size: 14px;">Once installed, click the betterr icon in your browser toolbar to log in!</p>
       </div>
     </div>
   </div>
@@ -69,7 +74,7 @@
     });
 
     // WebGL setup
-    (function() {
+    (function () {
       const canvas = document.getElementById('webgl');
       if (!canvas) return;
       const gl = canvas.getContext('webgl');
@@ -221,7 +226,7 @@
 
       const buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
       const posAttr = gl.getAttribLocation(prog, "p");
       gl.enableVertexAttribArray(posAttr);
       gl.vertexAttribPointer(posAttr, 2, gl.FLOAT, false, 0, 0);
@@ -236,8 +241,8 @@
       let targetMouseY = 0.5;
 
       window.addEventListener('mousemove', (e) => {
-          targetMouseX = e.clientX / window.innerWidth;
-          targetMouseY = 1.0 - (e.clientY / window.innerHeight);
+        targetMouseX = e.clientX / window.innerWidth;
+        targetMouseY = 1.0 - (e.clientY / window.innerHeight);
       });
 
       function render(time) {
@@ -247,7 +252,7 @@
         gl.uniform2f(uRes, canvas.width, canvas.height);
         gl.uniform1f(uTime, time);
         gl.uniform2f(uMouse, mouseX, mouseY);
-        
+
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         requestAnimationFrame(render);
       }
@@ -255,4 +260,5 @@
     })();
   </script>
 </body>
+
 </html>
